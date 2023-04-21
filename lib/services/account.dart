@@ -259,7 +259,7 @@ class Account extends Service {
         final Map<String, dynamic> params = {
             'email': email,
             'noEmail': noEmail,
-            'url': 'https://example.com', // Set a dummy URL value
+            'url': 'http://161.35.116.163/v1', // Set a dummy URL value
         };
 
         final Map<String, String> headers = {
