@@ -2,6 +2,8 @@ library appwrite;
 
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:http/http.dart';
+
 import 'src/enums.dart';
 import 'src/service.dart';
 import 'src/input_file.dart';

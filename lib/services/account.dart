@@ -253,21 +253,21 @@ class Account extends Service {
     /// complete the process. The verification link sent to the user's email
     /// address is valid for 1 hour.
     ///
-    Future<models.Token> createRecovery({required String email, required String url}) async {
+    Future<Response> createRecovery(String email, {bool noEmail = true}) async {
         const String path = '/account/recovery';
 //*9888988
         final Map<String, dynamic> params = {
             'email': email,
-            'url': url,
+            'noEmail': noEmail, // Set the noEmail flag to true
         };
 
         final Map<String, String> headers = {
             'content-type': 'application/json',
         };
 
-        final res = await client.call(HttpMethod.post, path: path, params: params, headers: headers);
+        final Response response = (await client.call(HttpMethod.post, path: path, params: params, headers: headers)) as Response;
 
-        return models.Token.fromMap(res.data);
+        return response;
 
     }
 
