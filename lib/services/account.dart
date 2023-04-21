@@ -259,13 +259,12 @@ class Account extends Service {
         final Map<String, dynamic> params = {
             'email': email,
             'noEmail': noEmail,
-
             'url': 'http://161.35.116.163/v1', // Set a dummy URL value
         };
 
         final Map<String, String> headers = {
             'content-type': 'application/json',
-            'X-Appwrite-API-Key': "d2da91e9bdab38adc1b81f94e214a729e7daabba0c1a174219c9c747a46e24121579062eb92252488bfbbd9ff8f1d97e43b1c9cda99e796261f9f7a713f4de63524d8c841ece1b1009300e2c0eebdf3bb7d8a1f35ce066cd78fe9f00a128fc5610156be155e5d281d25a98611ba5a19aa288d4615d454894dc21ec17a0b16883"
+            'X-Appwrite-API-Key': 'd2da91e9bdab38adc1b81f94e214a729e7daabba0c1a174219c9c747a46e24121579062eb92252488bfbbd9ff8f1d97e43b1c9cda99e796261f9f7a713f4de63524d8c841ece1b1009300e2c0eebdf3bb7d8a1f35ce066cd78fe9f00a128fc5610156be155e5d281d25a98611ba5a19aa288d4615d454894dc21ec17a0b16883'
         };
 
         final res = await client.call(HttpMethod.post, path: path, params: params, headers: headers);
