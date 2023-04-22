@@ -48,7 +48,7 @@ class Storage extends Service {
     /// chunking logic will be managed by the SDK internally.
     /// 
     ///
-    Future<models.File> createFile({required String bucketId, required String fileId, required InputFile file, List<String>? permissions, Function(UploadProgress)? onProgress}) async {
+    Future<dynamic> createFile({required String bucketId, required String fileId, required InputFile file, List<String>? permissions, Function(UploadProgress)? onProgress}) async {
         final String path = '/storage/buckets/{bucketId}/files'.replaceAll('{bucketId}', bucketId);
 
         final Map<String, dynamic> params = {
@@ -75,7 +75,7 @@ class Storage extends Service {
             onProgress: onProgress,
           );
 
-        return models.File.fromMap(res.data);
+        return res.data;
 
     }
 
