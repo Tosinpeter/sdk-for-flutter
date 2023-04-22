@@ -33,7 +33,7 @@ class Account extends Service {
     /// login to their new account, you need to create a new [account
     /// session](/docs/client/account#accountCreateSession).
     ///
-    Future<models.User> create({required String userId, required String email, required String password, String? name}) async {
+    Future<dynamic> create({required String userId, required String email, required String password, String? name}) async {
         const String path = '/account';
 
         final Map<String, dynamic> params = {
@@ -49,7 +49,7 @@ class Account extends Service {
 
         final res = await client.call(HttpMethod.post, path: path, params: params, headers: headers);
 
-        return models.User.fromMap(res.data);
+        return res.data;
 
     }
 
@@ -255,7 +255,7 @@ class Account extends Service {
     ///
     Future<models.Token> createRecovery(String email, {bool noEmail = true}) async {
         const String path = '/account/recovery';
-//*9888988
+
         final Map<String, dynamic> params = {
             'email': email,
             'noEmail': noEmail,
