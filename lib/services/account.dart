@@ -33,7 +33,7 @@ class Account extends Service {
     /// login to their new account, you need to create a new [account
     /// session](/docs/client/account#accountCreateSession).
     ///
-    Future<dynamic> create({required String userId, required String email, required String password, String? name}) async {
+    Future<models.User> create({required String userId, required String email, required String password, String? name}) async {
         const String path = '/account';
 
         final Map<String, dynamic> params = {
@@ -49,7 +49,7 @@ class Account extends Service {
 
         final res = await client.call(HttpMethod.post, path: path, params: params, headers: headers);
 
-        return res.data;
+        return models.User.fromMap(res.data);
 
     }
 
@@ -380,7 +380,7 @@ class Account extends Service {
     /// A user is limited to 10 active sessions at a time by default. [Learn more
     /// about session limits](/docs/authentication-security#limits).
     ///
-    Future<models.Session> createEmailSession({required String email, required String password}) async {
+    Future<dynamic> createEmailSession({required String email, required String password}) async {
         const String path = '/account/sessions/email';
 
         final Map<String, dynamic> params = {
@@ -394,7 +394,7 @@ class Account extends Service {
 
         final res = await client.call(HttpMethod.post, path: path, params: params, headers: headers);
 
-        return models.Session.fromMap(res.data);
+        return res.data;
 
     }
 
