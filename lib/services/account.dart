@@ -8,7 +8,7 @@ class Account extends Service {
     ///
     /// Get currently logged in user data as JSON object.
     ///
-    Future<models.User> get() async {
+    Future<dynamic> get() async {
         const String path = '/account';
 
         final Map<String, dynamic> params = {
@@ -20,7 +20,7 @@ class Account extends Service {
 
         final res = await client.call(HttpMethod.get, path: path, params: params, headers: headers);
 
-        return models.User.fromMap(res.data);
+        return res.data;
 
     }
 
