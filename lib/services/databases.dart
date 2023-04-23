@@ -10,7 +10,7 @@ class Databases extends Service {
     /// Get a list of all the user's documents in a given collection. You can use
     /// the query params to filter your results.
     ///
-    Future<models.DocumentList> listDocuments({required String databaseId, required String collectionId, List<String>? queries}) async {
+    Future<dynamic> listDocuments({required String databaseId, required String collectionId, List<String>? queries}) async {
         final String path = '/databases/{databaseId}/collections/{collectionId}/documents'.replaceAll('{databaseId}', databaseId).replaceAll('{collectionId}', collectionId);
 
         final Map<String, dynamic> params = {
@@ -23,7 +23,7 @@ class Databases extends Service {
 
         final res = await client.call(HttpMethod.get, path: path, params: params, headers: headers);
 
-        return models.DocumentList.fromMap(res.data);
+        return res.data;
 
     }
 
