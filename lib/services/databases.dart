@@ -58,7 +58,7 @@ class Databases extends Service {
     /// Get a document by its unique ID. This endpoint response returns a JSON
     /// object with the document data.
     ///
-    Future<models.Document> getDocument({required String databaseId, required String collectionId, required String documentId, List<String>? queries}) async {
+    Future<dynamic> getDocument({required String databaseId, required String collectionId, required String documentId, List<String>? queries}) async {
         final String path = '/databases/{databaseId}/collections/{collectionId}/documents/{documentId}'.replaceAll('{databaseId}', databaseId).replaceAll('{collectionId}', collectionId).replaceAll('{documentId}', documentId);
 
         final Map<String, dynamic> params = {
@@ -71,7 +71,7 @@ class Databases extends Service {
 
         final res = await client.call(HttpMethod.get, path: path, params: params, headers: headers);
 
-        return models.Document.fromMap(res.data);
+        return res.data;
 
     }
 
@@ -80,7 +80,7 @@ class Databases extends Service {
     /// Update a document by its unique ID. Using the patch method you can pass
     /// only specific fields that will get updated.
     ///
-    Future<models.Document> updateDocument({required String databaseId, required String collectionId, required String documentId, Map? data, List<String>? permissions}) async {
+    Future<dynamic> updateDocument({required String databaseId, required String collectionId, required String documentId, Map? data, List<String>? permissions}) async {
         final String path = '/databases/{databaseId}/collections/{collectionId}/documents/{documentId}'.replaceAll('{databaseId}', databaseId).replaceAll('{collectionId}', collectionId).replaceAll('{documentId}', documentId);
 
         final Map<String, dynamic> params = {
@@ -94,7 +94,7 @@ class Databases extends Service {
 
         final res = await client.call(HttpMethod.patch, path: path, params: params, headers: headers);
 
-        return models.Document.fromMap(res.data);
+        return res.data;
 
     }
 
